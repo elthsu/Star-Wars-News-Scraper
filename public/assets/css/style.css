@@ -1,0 +1,78 @@
+body {
+
+  background-image: url("../img/swbg.jpg");
+
+}
+
+h3, h4{
+
+  text-align: left;
+  padding-right: 300px;
+}
+
+.modal {
+   position: absolute;
+   top: -10px;
+   bottom: 0;
+   left: 0;
+   z-index: 10040;
+   overflow: auto;
+}
+
+.newsItem {
+
+  border-bottom: 2px solid lightgrey;
+}
+
+#top_content {
+
+  padding-bottom: 25px;
+  border-bottom: 2px solid lightgrey;
+}
+
+.userAddBtn,
+.favBtn,
+.removeBtn,
+.notesBtn,
+.seeNotesBtn {
+
+  float: right;
+  margin-left: 30px;
+}
+
+#savedBtn,
+#homeBtn {
+
+  margin-top: 15px;
+  float: right;
+}
+
+#header_div {
+
+  margin-top: 50px;
+  padding: 0;
+
+}
+
+#banner {
+
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 5px;
+
+}
+
+#body_content {
+
+  padding: 20px;
+  padding-left: 75px;
+  padding-right: 75px;
+  margin: 0;
+  margin-top: 20px;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  line-height: 1.5;
+  min-height: 600px;
+}

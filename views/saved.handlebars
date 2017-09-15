@@ -1,0 +1,44 @@
+<div class="col-sm-12" id="body_content">
+  <div class="row" id="top_content">
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-info" id="homeBtn"><div class="glyphicon glyphicon-home"></div>&nbsp;Back to Home</button>
+    </div>
+    <div class="col-sm-8 text-center" id="savedNotes">
+    </div>
+    <div class="col-sm-2">
+    </div>
+  </div>
+  <div class="row">
+    <!-- Results Div -->
+    <div class="col-sm.12 text-center" id="results_body">
+      <!-- Modal -->
+      <div class="modal fade" id="myNotes" tabindex="-1" role="dialog" aria-labelledby="myNotesLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Save a Note</h4>
+            </div>
+
+
+            <form action="/submit" method="post">
+            <div class="modal-body">
+            <textarea class="form-control" rows="3" id="notesContent"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary" data-dismiss="modal" id="saveNotesBtn">Save Notes</button>
+            </div>
+          </form>
+
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+      {{#each articles}}
+      <div class='newsItem' id="div{{this._id}}"><button type='button' class='btn btn-warning removeBtn' value="{{this._id}}" id="{{this._id}}"><div class="glyphicon glyphicon-minus" class="removeBtn"></div>&nbsp;Remove from Favorites!</button>
+      <button type='button' class='btn btn-primary notesBtn' value="{{this._id}}" id="{{this._id}}" data-toggle="modal" data-target="#myNotes"><div class="glyphicon glyphicon-pencil" class="notesBtn"></div>&nbsp;Add a Note!</button><button type='button' class='btn btn-success seeNotesBtn' value="{{this._id}}" id="{{this._id}}"><div class="glyphicon glyphicon-eye-open" class="seeNotesBtn"></div>&nbsp;See Notes!</button><a href='http://www.theforce.net/{{this.link}}' target='_blank'><h3>{{this.title}}</h3></a><h4>{{this.content}}</h4></div>
+
+      {{/each}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="col-sm-12" id="body_content">
+  <div class="row" id="top_content">
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-info" id="savedBtn"><div class="glyphicon glyphicon-paperclip"></div>&nbsp;Saved Articles</button>
+    </div>
+    <div class="col-sm-8 text-center" id="btnDiv">
+      <!-- Indicates a dangerous or potentially negative action -->
+      <button type="button" class="btn btn-danger" id="scrapeBtn"><div class="glyphicon glyphicon-flash"></div>&nbsp;Get Star Wars News!</button>
+      <h6>Star Wars News Powered By TheForce.net</h6>
+    </div>
+    <div class="col-sm-2">
+    </div>
+  </div>
+  <div class="row">
+    <!-- Results Div -->
+    <div class="col-sm.12 text-center" id="results_body">
+      {{#each articles}}
+      <div class='newsItem' id="div{{this._id}}"><button type='button' class='btn btn-success userAddBtn' value="{{this._id}}" id="{{this._id}}"><div class="glyphicon glyphicon-plus" class="favBtn"></div>&nbsp;Add to Favorites!</button><a href='http://www.theforce.net/{{this.link}}' target='_blank'><h3>{{this.title}}</h3></a><h4>{{this.content}}</h4></div>
+      {{/each}}
+    </div>
+  </div>
+</div>
