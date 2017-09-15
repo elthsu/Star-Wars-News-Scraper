@@ -65,18 +65,6 @@ $(document).on("click", ".userAddBtn", function(event){
     });
 
 
-    $(document).on("click", ".seeNotesBtn", function(event){
-
-      $.get("/seenotes/" + $(this).val()).then(function(data){
-
-        console.log(data.note);
-      });
-
-    });
-
-
-
-
 
     $(document).on("click", "#saveNotesBtn", function(event){
 
@@ -97,3 +85,27 @@ $(document).on("click", ".userAddBtn", function(event){
     }
 
     });
+
+    $(document).on("click", ".seeNotesBtn", function(event){
+
+        $("#modalBodyNotes").empty();
+        $("#modalBodyDelete").empty();
+      $.get("/notes/" + $(this).val()).then(function(data){
+
+        for (var i = 0; i < (data[0].note).length; i++) {
+          $("#modalBodyNotes").append("<div class='notesDisplay'><h5>" + data[0].note[i].content+ "</h5></div>");
+          $("#modalBodyDelete").append("<button class='btn btn-danger' id='delNote' type='submit' value='" + data[0].note[i]._id + "'><div class='glyphicon glyphicon-trash'></div></button>");
+        }
+
+      });
+
+    });
+
+    $(document).on("click", "#delNote", function(event){
+
+      $.post("/deleteNote/" + $(this).val()).then(function(data){
+        window.location.href = "/saved";
+      });
+    });
+
+    

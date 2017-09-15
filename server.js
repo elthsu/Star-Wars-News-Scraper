@@ -24,9 +24,6 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var databaseUri = 'mongodb://localhost/scrapeNews';
-
-
 
 mongoose.connect("mongodb://heroku_8fnbssj3:33jlmjdk19dlvnf28c1pvi727e@ds135514.mlab.com:35514/heroku_8fnbssj3");
 
@@ -205,6 +202,29 @@ app.get("/seenotes/", function(req, res) {
     });
 });
 
+// Route to see what user looks like WITH populating
+app.get("/notes/:id", function(req, res) {
+  // Prepare a query to find all users..
+  console.log(req.params.id);
+  Article.find({_id : req.params.id}).populate("note").exec(function(error, doc) {
+
+      // Send any errors to the browser
+      if (error) {
+        res.send(error);
+      }
+      // Or send the doc to the browser
+      else {
+        res.send(doc);
+      }
+    });
+});
+
+app.post("/deleteNote/:id", function(req, res){
+
+  Note.findByIdAndRemove(req.params.id, function(err, doc){
+    res.send(doc);
+  });
+});
 
 // Listen on port 3010
 app.listen(process.env.PORT || 3010, function() {

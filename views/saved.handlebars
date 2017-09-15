@@ -11,8 +11,8 @@
   <div class="row">
     <!-- Results Div -->
     <div class="col-sm.12 text-center" id="results_body">
-      <!-- Modal -->
-      <div class="modal fade" id="myNotes" tabindex="-1" role="dialog" aria-labelledby="myNotesLabel">
+      <!-- Add Notes Modal -->
+      <div class="modal fade" id="addNotes" tabindex="-1" role="dialog" aria-labelledby="myNotesLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -34,9 +34,35 @@
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
+
+
+      <!-- See Notes Modal -->
+      <div class="modal fade" id="seeNotes" tabindex="-1" role="dialog" aria-labelledby="myNotesLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">See Your Notes</h4>
+            </div>
+
+            <div class="modal-body">
+              <div class="modal-container">
+                <div class="row">
+                  <div class="col-sm-10" id="modalBodyNotes">
+                  </div>
+                  <div class="col-sm-2" id="modalBodyDelete">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
       {{#each articles}}
       <div class='newsItem' id="div{{this._id}}"><button type='button' class='btn btn-warning removeBtn' value="{{this._id}}" id="{{this._id}}"><div class="glyphicon glyphicon-minus" class="removeBtn"></div>&nbsp;Remove from Favorites!</button>
-      <button type='button' class='btn btn-primary notesBtn' value="{{this._id}}" id="{{this._id}}" data-toggle="modal" data-target="#myNotes"><div class="glyphicon glyphicon-pencil" class="notesBtn"></div>&nbsp;Add a Note!</button><button type='button' class='btn btn-success seeNotesBtn' value="{{this._id}}" id="{{this._id}}"><div class="glyphicon glyphicon-eye-open" class="seeNotesBtn"></div>&nbsp;See Notes!</button><a href='http://www.theforce.net/{{this.link}}' target='_blank'><h3>{{this.title}}</h3></a><h4>{{this.content}}</h4></div>
+      <button type='button' class='btn btn-primary notesBtn' value="{{this._id}}" id="{{this._id}}" data-toggle="modal" data-target="#addNotes"><div class="glyphicon glyphicon-pencil" class="notesBtn"></div>&nbsp;Add a Note!</button><button type='button' class='btn btn-success seeNotesBtn' value="{{this._id}}" id="{{this._id}}" data-toggle="modal" data-target="#seeNotes"><div class="glyphicon glyphicon-eye-open" class="seeNotesBtn"></div>&nbsp;See Notes!</button><a href='http://www.theforce.net/{{this.link}}' target='_blank'><h3>{{this.title}}</h3></a><h4>{{this.content}}</h4></div>
 
       {{/each}}
     </div>
