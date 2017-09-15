@@ -57,7 +57,7 @@ $(document).on("click", ".userAddBtn", function(event){
 
     });
 
-
+    //button click to capture the notes ID and save to variable
     $(document).on("click", ".notesBtn", function(event){
 
       notesID = $(this).val();
@@ -65,27 +65,20 @@ $(document).on("click", ".userAddBtn", function(event){
     });
 
 
-
+    //button click to save the note to the db
     $(document).on("click", "#saveNotesBtn", function(event){
-
     var notes = $('#notesContent').val();
-
     if (notes) {
-
       $.post("/submit/" + notesID, {
-
         id: notesID,
         content: notes
-
       }).then(function(data){
-
         window.location.href = "/saved";
       });
-
     }
-
     });
 
+    //button click to see your notes
     $(document).on("click", ".seeNotesBtn", function(event){
 
         $("#modalBodyNotes").empty();
@@ -96,16 +89,13 @@ $(document).on("click", ".userAddBtn", function(event){
           $("#modalBodyNotes").append("<div class='notesDisplay'><h5>" + data[0].note[i].content+ "</h5></div>");
           $("#modalBodyDelete").append("<button class='btn btn-danger' id='delNote' type='submit' value='" + data[0].note[i]._id + "'><div class='glyphicon glyphicon-trash'></div></button>");
         }
-
       });
-
     });
 
+    //button click to delete note
     $(document).on("click", "#delNote", function(event){
 
       $.post("/deleteNote/" + $(this).val()).then(function(data){
         window.location.href = "/saved";
       });
     });
-
-    
