@@ -26,15 +26,11 @@ app.set("view engine", "handlebars");
 
 var databaseUri = 'mongodb://localhost/scrapeNews';
 
-if (process.env.MONGODB_URI){
 
-  mongoose.connect(process.env.MONGODB_URI);
-} else {
+
+mongoose.connect("mongodb://heroku_8fnbssj3:33jlmjdk19dlvnf28c1pvi727e@ds135514.mlab.com:35514/heroku_8fnbssj3");
 
 // Database configuration with mongoose
-mongoose.connect(databaseUri, {useMongoClient: true});
-
-}
 
 mongoose.connection.on("connected", function(){
   console.log("Mongoose connection successful.");
