@@ -207,6 +207,6 @@ app.get("/seenotes/", function(req, res) {
 
 
 // Listen on port 3010
-app.listen(3010, function() {
+app.listen(process.env.PORT || 3010, function() {
   console.log("App running on port 3010!");
 });
