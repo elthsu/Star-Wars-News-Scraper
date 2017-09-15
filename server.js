@@ -24,8 +24,18 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+var databaseUri = 'mongodb://localhost/scrapeNews';
+
+if (process.env.MONGODB_URI){
+
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/scrapeNews", {useMongoClient: true});
+mongoose.connect(databaseUri, {useMongoClient: true});
+
+}
+
 mongoose.connection.on("connected", function(){
   console.log("Mongoose connection successful.");
 });
